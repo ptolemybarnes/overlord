@@ -44,11 +44,11 @@ describe Overlord do
       include Overlord
 
       def bar(baz:, wow:)
-        baz
+        [baz, wow].join(', ')
       end
     end
     foo = Thing.new
 
-    expect(foo.bar(baz: 'bang', wow: 'yes')).to eq 'bang'
+    expect(foo.bar(baz: 'bang', wow: 'yes')).to eq 'bang, yes'
   end
 end
