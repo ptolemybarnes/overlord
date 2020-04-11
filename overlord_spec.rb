@@ -38,4 +38,17 @@ describe Overlord do
 
     expect { foo.bar(1, 2, 3) }.to raise_error(NoMethodError, 'undefined method `bar` with arity 3')
   end
+
+  it 'works on keyword args' do
+    class Thing
+      include Overlord
+
+      def bar(baz:, wow:)
+        baz
+      end
+    end
+    foo = Thing.new
+
+    expect(foo.bar(baz: 'bang', wow: 'yes')).to eq 'bang'
+  end
 end
