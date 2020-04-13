@@ -7,7 +7,7 @@ module Overlord
       parameters = method.parameters
 
       # assumes all-or-nothing with keyword parameters
-      args_key = parameters.any? {|key, name| key === :keyreq } ?
+      args_key = parameters.any? { |key, name| key === :keyreq } ?
         parameters.flat_map(&:last).sort :
         method.arity
 
